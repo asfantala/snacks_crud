@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snacks app</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'snack_list' %}"> Snack list</a>
+
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+
+
+    </footer>
+</body>
+
+</html>
