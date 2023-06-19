@@ -6,7 +6,7 @@ from .models import Snack
 
 
 class SnackPageTests(TestCase):
-     def setUp(self):
+    def setUp(self):
         # Create a test user
         User = get_user_model()
         self.user = User.objects.create_user(
@@ -20,7 +20,8 @@ class SnackPageTests(TestCase):
             purchaser=self.user,
             description='Test snack description'
         )
-     def test_snack_list_page(self):
+
+    def test_snack_list_page(self):
         # Generate the URL for the snack list page
         url = reverse('snack_list')
 
@@ -33,7 +34,7 @@ class SnackPageTests(TestCase):
         # Verify the template used is 'snack_list.html'
         self.assertTemplateUsed(response, 'snack_list.html')
 
-     def test_snack_detail_page(self):
+    def test_snack_detail_page(self):
         # Generate the URL for the snack detail page using the snack's ID
         url = reverse('snack_detail', args=[self.snack.pk])
 
@@ -50,5 +51,21 @@ class SnackPageTests(TestCase):
         self.assertContains(response, self.snack.name)
         self.assertContains(response, self.snack.description)
         self.assertContains(response, self.snack.purchaser.username)
+
+    def test_str_method(self):
+        self.assertEqual(str(self.snack), "Test Snack")
+
+    def test_create_view(self):
+        obj = {
+            'name': "Test Snack 2",
+            'description': 'Test snack description 2',
+            'purchaser': self.user.id,
+        }
+
+        url = reverse('snack_create')
+        response = self.client.post(path=url, data=obj, follow=True)
+        self.assertRedirects(response, reverse('snack_detail', args=[2]))
+
+
 
 

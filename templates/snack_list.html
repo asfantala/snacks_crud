@@ -3,7 +3,13 @@
 {% block content%}
     
     <h1>welcome snack list page</h1>
+    <button><a href="{% url 'snack_create'%}">Add a Snack</a></button>
+
     {% for snack in Snacks%}
+
         <h3><a href="{% url 'snack_detail' snack.pk%}">{{snack.name}}</a></h3>
+        <button><a href="{% url 'snack_update' snack.pk%}">Update</a></button>
+        <button><a href="{% url 'snack_delete' snack.pk%}">Delete</a></button>
+        
     {%endfor%}
 {% endblock content%}

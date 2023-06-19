@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'snack_tracker_project.urls'
+ROOT_URLCONF = 'snacks_crud_project.urls'
 
 TEMPLATES = [
     {
@@ -68,7 +68,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'snack_tracker_project.wsgi.application'
+WSGI_APPLICATION = 'snacks_crud_project.wsgi.application'
 
 
 # Database
